@@ -1,0 +1,25 @@
+{% extends 'games/base_template.html'%}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="display-5">Game Collection</h1>
+    <div class="flex-row row">
+        {% for game in all_games %}
+        <div class="col-xs-6 col-sm-4 col-lg-3">
+            <div class="thumbnail">
+                <a href="{% url 'games:game-update' game.id %}">
+                    <img src="{{game.logo}}" class="img-thumbnail">
+                </a>
+                <div class="caption">
+                    Name: {{game.title}} <br/>
+                    Genre: {{game.genre}}<br/>
+                    Production: {{game.production}}<br/>
+                    Year: {{game.release_year}}
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
